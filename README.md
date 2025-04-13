@@ -1,2 +1,2 @@
 # Area Calculator Application
- An Android Application for calculating the area of different shapes
+ An android application for calculating the area of different shapes.
