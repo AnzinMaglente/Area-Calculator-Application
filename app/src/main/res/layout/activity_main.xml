@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/appname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textSize="35sp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <FrameLayout
+        android:id="@id/display"
+        android:layout_width="300dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="20dp"
+
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appname">
+
+        <TextView
+            android:id="@+id/displaybox"
+            android:layout_width="300dp"
+            android:layout_height="250dp"
+            android:background="@drawable/square"
+            tools:ignore="VisualLintOverlap" />
+
+        <TextView
+            android:id="@+id/displaysquare"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:background="@drawable/square"
+            tools:ignore="VisualLintOverlap" />
+        <TextView
+            android:id="@+id/displayrectangle"
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:background="@drawable/square"
+            tools:ignore="VisualLintOverlap" />
+        <TextView
+            android:id="@+id/displaycircle"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:background="@drawable/circle"
+            tools:ignore="VisualLintOverlap" />
+        <TextView
+            android:id="@+id/displaytriangle"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:background="@drawable/triangle"
+            tools:ignore="VisualLintOverlap" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/shapetypeqry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/shape_type"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif-light"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/display"
+        />
+
+    <Spinner
+        android:id="@+id/shapetype"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="9dp"
+        android:spinnerMode="dialog"
+        app:layout_constraintBottom_toBottomOf="@id/shapetypeqry"
+        app:layout_constraintStart_toEndOf="@id/shapetypeqry"
+        app:layout_constraintTop_toTopOf="@id/shapetypeqry"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/squaregroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="15dp"
+        android:paddingTop="25dp"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shapetypeqry">
+
+        <TextView
+            android:id="@+id/squarelengthqry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/square_side"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/squarelength"
+            android:layout_width="130sp"
+            android:layout_height="48sp"
+            android:layout_marginStart="15dp"
+            android:autofillHints=""
+            android:fontFamily="sans-serif-condensed-medium"
+            android:hint="@string/edt_decimal_num"
+            android:inputType="numberDecimal"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/squarelengthqry"
+            app:layout_constraintStart_toEndOf="@id/squarelengthqry"
+            app:layout_constraintTop_toTopOf="@id/squarelengthqry"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rectangleGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="15dp"
+        android:paddingTop="25dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shapetypeqry">
+
+        <TextView
+            android:id="@+id/rectanglelengthqry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/rectangle_length"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/rectanglelength"
+            android:layout_width="135sp"
+            android:layout_height="48sp"
+            android:layout_marginStart="15dp"
+            android:autofillHints=""
+            android:fontFamily="sans-serif-condensed-medium"
+            android:hint="@string/edt_decimal_num"
+            android:inputType="numberDecimal"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/rectanglelengthqry"
+            app:layout_constraintStart_toEndOf="@id/rectanglelengthqry"
+            app:layout_constraintTop_toTopOf="@id/rectanglelengthqry"
+            tools:ignore="DuplicateSpeakableTextCheck" />
+
+        <TextView
+            android:id="@+id/rectanglewidthqry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/rectangle_width"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rectanglelengthqry" />
+
+        <EditText
+            android:id="@+id/rectanglewidth"
+            android:layout_width="138sp"
+            android:layout_height="48sp"
+            android:layout_marginStart="19.5dp"
+            android:autofillHints=""
+            android:fontFamily="sans-serif-condensed-medium"
+            android:hint="@string/edt_decimal_num"
+            android:inputType="numberDecimal"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/rectanglewidthqry"
+            app:layout_constraintStart_toEndOf="@id/rectanglewidthqry"
+            app:layout_constraintTop_toTopOf="@id/rectanglewidthqry" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/circlegroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="15dp"
+        android:paddingTop="25dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shapetypeqry">
+
+        <TextView
+            android:id="@+id/circleradiusqry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/circle_radius"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/circleradius"
+            android:layout_width="120sp"
+            android:layout_height="48sp"
+            android:layout_marginStart="15dp"
+            android:autofillHints=""
+            android:fontFamily="sans-serif-condensed-medium"
+            android:hint="@string/edt_decimal_num"
+            android:inputType="numberDecimal"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/circleradiusqry"
+            app:layout_constraintStart_toEndOf="@id/circleradiusqry"
+            app:layout_constraintTop_toTopOf="@id/circleradiusqry"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/trianglegroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="15dp"
+        android:paddingTop="25dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shapetypeqry">
+
+        <TextView
+            android:id="@+id/trianglebaseqry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/triangle_base"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/trianglebase"
+            android:layout_width="155sp"
+            android:layout_height="48sp"
+            android:layout_marginStart="15dp"
+            android:autofillHints=""
+            android:fontFamily="sans-serif-condensed-medium"
+            android:hint="@string/edt_decimal_num"
+            android:inputType="numberDecimal"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/trianglebaseqry"
+            app:layout_constraintStart_toEndOf="@id/trianglebaseqry"
+            app:layout_constraintTop_toTopOf="@id/trianglebaseqry"
+            tools:ignore="DuplicateSpeakableTextCheck" />
+
+        <TextView
+            android:id="@+id/triangleheightqry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/triangle_height"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/trianglebase" />
+
+        <EditText
+            android:id="@+id/triangleheight"
+            android:layout_width="150sp"
+            android:layout_height="48sp"
+            android:layout_marginStart="8dp"
+            android:autofillHints=""
+            android:fontFamily="sans-serif-condensed-medium"
+            android:hint="@string/edt_decimal_num"
+            android:inputType="numberDecimal"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/triangleheightqry"
+            app:layout_constraintStart_toEndOf="@id/triangleheightqry"
+            app:layout_constraintTop_toTopOf="@id/triangleheightqry" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/submitbutton"
+        android:layout_width="300dp"
+        android:layout_height="55dp"
+        android:text="@string/submit"
+        android:textSize="23sp"
+        android:fontFamily="sans-serif-light"
+        android:layout_marginBottom="30dp"
+        android:layout_marginStart="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/shapearea"
+        />
+
+    <TextView
+        android:id="@+id/shapearea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-light"
+        android:layout_marginBottom="60dp"
+        android:layout_marginStart="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

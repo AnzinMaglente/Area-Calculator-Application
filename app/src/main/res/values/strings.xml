@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Area Calculator</string>
+
+    <string name="shape_type">Shape Type: </string>
+    <string name="rectangle_length">Rectangle Length:</string>
+    <string name="rectangle_width">Rectangle Width:</string>
+    <string name="square_side">Length of One Side:</string>
+    <string name="circle_radius">Radius of the Circle:</string>
+    <string name="triangle_base">Triangle Base:</string>
+    <string name="triangle_height">Triangle Height:</string>
+
+    <string name="edt_decimal_num">10.0</string>
+    <string name="submit">Submit</string>
+
+    <string name="square_result">"The area of this square is: "</string>
+    <string name="rectangle_result">"The area of this rectangle is: "</string>
+    <string name="circle_result">"The area of this circle is: "</string>
+    <string name="triangle_result">"The area of this Triangle is: "</string>
+    <string name="Double">%.2f</string>
+
+    <string-array name="spinner_shape_type">
+        <item>Square</item>
+        <item>Rectangle</item>
+        <item>Circle</item>
+        <item>Triangle</item>
+    </string-array>
+</resources>
