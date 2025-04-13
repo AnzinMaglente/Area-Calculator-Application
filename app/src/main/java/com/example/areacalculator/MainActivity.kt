@@ -1,6 +1,9 @@
 package com.example.areacalculator
 
+import android.content.Context
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.Button
 import android.view.View
 import android.view.animation.Animation
@@ -12,9 +15,11 @@ import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import kotlinx.coroutines.delay
 import kotlin.math.pow
 
 class MainActivity : AppCompatActivity() {
@@ -79,6 +84,20 @@ class MainActivity : AppCompatActivity() {
         submitButton = findViewById(R.id.submitbutton)
         shapeArea = findViewById(R.id.shapearea)
 
+        // Square Variables
+        squarelength = findViewById(R.id.squarelength)
+
+        // Rectangle Variables
+        rectangleLengthEdt = findViewById(R.id.rectanglelength)
+        rectangleWidthEdt = findViewById(R.id.rectanglewidth)
+
+        // Circle Variables
+        circleradius = findViewById(R.id.circleradius)
+
+        // Triangle Variables
+        trianglebase = findViewById(R.id.trianglebase)
+        triangleheight = findViewById(R.id.triangleheight)
+
         val animation : Animation = AnimationUtils.loadAnimation(applicationContext, R.anim.fade_in)
         main.setAnimation(animation)
 
@@ -107,8 +126,6 @@ class MainActivity : AppCompatActivity() {
 
                         trianglegroup.visibility = View.GONE
                         displaytriangle.visibility = TextView.GONE
-
-                        shapeArea.text = ""
                     }
                     "Rectangle" -> {
                         squaregroup.visibility = View.GONE
@@ -122,8 +139,6 @@ class MainActivity : AppCompatActivity() {
 
                         trianglegroup.visibility = View.GONE
                         displaytriangle.visibility = TextView.GONE
-
-                        shapeArea.text = ""
                     }
                     "Circle" -> {
                         squaregroup.visibility = View.GONE
@@ -137,8 +152,6 @@ class MainActivity : AppCompatActivity() {
 
                         trianglegroup.visibility = View.GONE
                         displaytriangle.visibility = TextView.GONE
-
-                        shapeArea.text = ""
                     }
                     "Triangle" -> {
                         squaregroup.visibility = View.GONE
@@ -152,10 +165,16 @@ class MainActivity : AppCompatActivity() {
 
                         trianglegroup.visibility = View.VISIBLE
                         displaytriangle.visibility = TextView.VISIBLE
-
-                        shapeArea.text = ""
                     }
                 }
+
+                squarelength.text.clear()
+                rectangleLengthEdt.text.clear()
+                rectangleWidthEdt.text.clear()
+                circleradius.text.clear()
+                trianglebase.text.clear()
+                triangleheight.text.clear()
+                shapeArea.text = ""
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -184,12 +203,15 @@ class MainActivity : AppCompatActivity() {
             val squareLength = String.format(getString(R.string.Double), (squareLengthString.toDoubleOrNull()) ?: 0.0)
 
             val result = squareLength.toDouble().pow(2.00)
-            shapeArea.text = (buildString {
-                append(getString(R.string.square_result))
-                append(result.toString())
-            })
 
-            Toast.makeText(this, "Calculation Successful!", Toast.LENGTH_SHORT).show()
+            Handler(Looper.getMainLooper()).postDelayed({
+                Toast.makeText(this, "Calculation Successful!", Toast.LENGTH_SHORT).show()
+
+                shapeArea.text = (buildString {
+                    append(getString(R.string.square_result))
+                    append(result.toString())
+                })
+            }, 2000)
         }
 
         fun rectangleCalculation(rectangleWidthString: String, rectangleLengthString: String) {
@@ -197,24 +219,30 @@ class MainActivity : AppCompatActivity() {
             val rectangleLength = String.format(getString((R.string.Double)), (rectangleLengthString.toDoubleOrNull()) ?: 0.0)
 
             val result = rectangleWidth.toDouble() * rectangleLength.toDouble()
-            shapeArea.text = (buildString {
-                append(getString(R.string.rectangle_result))
-                append(result.toString())
-            })
 
-            Toast.makeText(this, "Calculation Successful!", Toast.LENGTH_SHORT).show()
+            Handler(Looper.getMainLooper()).postDelayed({
+                Toast.makeText(this, "Calculation Successful!", Toast.LENGTH_SHORT).show()
+
+                shapeArea.text = (buildString {
+                    append(getString(R.string.rectangle_result))
+                    append(result.toString())
+                })
+            }, 2000)
         }
 
         fun circleCalculation(circleRadiusString: String) {
             val circleRadius = String.format(getString((R.string.Double)), (circleRadiusString.toDoubleOrNull()) ?: 0.0)
 
             val result = circleRadius.toDouble().pow(2.00) * 3.14
-            shapeArea.text = (buildString {
-                append(getString(R.string.circle_result))
-                append(result.toString())
-            })
 
-            Toast.makeText(this, "Calculation Successful!", Toast.LENGTH_SHORT).show()
+            Handler(Looper.getMainLooper()).postDelayed({
+                Toast.makeText(this, "Calculation Successful!", Toast.LENGTH_SHORT).show()
+
+                shapeArea.text = (buildString {
+                    append(getString(R.string.circle_result))
+                    append(result.toString())
+                })
+            }, 2000)
         }
 
         fun triangleCalculation(triangleBaseString: String, triangleHeightString: String) {
@@ -222,43 +250,43 @@ class MainActivity : AppCompatActivity() {
             val triangleHeight = String.format(getString((R.string.Double)), (triangleHeightString.toDoubleOrNull()) ?: 0.0)
 
             val result = triangleBase.toDouble() * triangleHeight.toDouble() * 0.50
-            shapeArea.text = (buildString {
-                append(getString(R.string.triangle_result))
-                append(result.toString())
-            })
 
-            Toast.makeText(this, "Calculation Successful!", Toast.LENGTH_SHORT).show()
+            Handler(Looper.getMainLooper()).postDelayed({
+                Toast.makeText(this, "Calculation Successful!", Toast.LENGTH_SHORT).show()
+
+                shapeArea.text = (buildString {
+                    append(getString(R.string.triangle_result))
+                    append(result.toString())
+                })
+            }, 2000)
         }
 
         submitButton.setOnClickListener {
+            showAlertDialog()
+
             when (selectedType) {
                 "Square" -> {
-                    // Square Variables
-                    squarelength = findViewById(R.id.squarelength)
-
                     squareCalculation(squarelength.text.toString())
                 }
                 "Rectangle" -> {
-                    // Rectangle Variables
-                    rectangleLengthEdt = findViewById(R.id.rectanglelength)
-                    rectangleWidthEdt = findViewById(R.id.rectanglewidth)
-
                     rectangleCalculation(rectangleLengthEdt.text.toString(), rectangleWidthEdt.text.toString())
                 }
                 "Circle" -> {
-                    // Circle Variables
-                    circleradius = findViewById(R.id.circleradius)
-
                     circleCalculation(circleradius.text.toString())
                 }
                 "Triangle" -> {
-                    // Triangle Variables
-                    trianglebase = findViewById(R.id.trianglebase)
-                    triangleheight = findViewById(R.id.triangleheight)
-
                     triangleCalculation(trianglebase.text.toString(), triangleheight.text.toString())
                 }
             }
         }
+    }
+
+    private fun showAlertDialog(){
+        val builder = AlertDialog.Builder(this)
+        builder
+            .setTitle("Please Wait...")
+            .setMessage("Computing your query, click outside the box to continue.")
+        val alertDialog : AlertDialog = builder.create()
+        alertDialog.show()
     }
 }
