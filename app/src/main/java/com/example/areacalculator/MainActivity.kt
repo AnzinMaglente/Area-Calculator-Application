@@ -19,35 +19,45 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import kotlinx.coroutines.delay
 import kotlin.math.pow
 
 class MainActivity : AppCompatActivity() {
 
+    // Initializing variables
+    // lateinit starts after the property has been constructed.
+
+    // The main view screen.
     private lateinit var main: View
 
+    // Groups of elements for specific shapes.
     private lateinit var squaregroup: View
     private lateinit var rectanglegroup: View
     private lateinit var circlegroup: View
     private lateinit var trianglegroup: View
 
+    // What is displayed in the display box.
     private lateinit var displaysquare: TextView
     private lateinit var displayrectangle: TextView
     private lateinit var displaycircle: TextView
     private lateinit var displaytriangle: TextView
 
+    // General variables.
     private lateinit var shapetypeqry: TextView
     private lateinit var shapetype: Spinner
     private lateinit var submitButton: Button
     private lateinit var shapeArea: TextView
 
+    // Square variables.
     private lateinit var squarelength: EditText
 
+    // Rectangle variables.
     private lateinit var rectangleLengthEdt: EditText
     private lateinit var rectangleWidthEdt: EditText
 
+    // Circle variables
     private lateinit var circleradius: EditText
 
+    // Triangle variables
     private lateinit var trianglebase: EditText
     private lateinit var triangleheight: EditText
 
@@ -65,6 +75,7 @@ class MainActivity : AppCompatActivity() {
         // Global Variables
         var selectedType = "Square"
 
+        // "findViewbyid" finds the id of elements.
         // View Groups
         squaregroup = findViewById(R.id.squaregroup)
         rectanglegroup = findViewById(R.id.rectangleGroup)
@@ -98,23 +109,32 @@ class MainActivity : AppCompatActivity() {
         trianglebase = findViewById(R.id.trianglebase)
         triangleheight = findViewById(R.id.triangleheight)
 
+        // This is another animation that occurs after the screen has been loaded wherein it fades in.
         val animation : Animation = AnimationUtils.loadAnimation(applicationContext, R.anim.fade_in)
         main.setAnimation(animation)
 
+        // This places a list of items inside the shape type spinner / dropdown using an arrayadapter.
         val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, resources.getStringArray(R.array.spinner_shape_type))
         arrayAdapter.setDropDownViewResource((android.R.layout.simple_spinner_dropdown_item))
         shapetype.adapter = arrayAdapter
 
+        // This specifies what occurs when the user chooses a certain shape.
         shapetype.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                // This is used to get the user selected item.
                 selectedType  = parent.getItemAtPosition(position).toString()
+
+                // .text is used to change the string of a textview
+                // buldString is used to combine two separate strings into one.
                 shapetypeqry.text = (buildString {
                     append(getString(R.string.shape_type))
                     append(selectedType)
                 })
 
+                // when checks when the selectedType variable is one of the many choices.
                 when (selectedType) {
                     "Square" -> {
+                        // visibility changes the visible of an element
                         squaregroup.visibility = View.VISIBLE
                         displaysquare.visibility = TextView.VISIBLE
 
@@ -168,6 +188,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
 
+                // This is to clear any input fields and remove the result after switching to a different shape.
                 squarelength.text.clear()
                 rectangleLengthEdt.text.clear()
                 rectangleWidthEdt.text.clear()
@@ -200,10 +221,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         fun squareCalculation(squareLengthString: String) {
+            // This formats the string into a double.
             val squareLength = String.format(getString(R.string.Double), (squareLengthString.toDoubleOrNull()) ?: 0.0)
 
+            // pow is used as the mathematical equivalent of power by.
             val result = squareLength.toDouble().pow(2.00)
 
+            // This handlers delays the action for 2 seconds before allowing it to happen
             Handler(Looper.getMainLooper()).postDelayed({
                 Toast.makeText(this, "Calculation Successful!", Toast.LENGTH_SHORT).show()
 
@@ -262,6 +286,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         submitButton.setOnClickListener {
+            // This activates the showAlertDialog.
             showAlertDialog()
 
             when (selectedType) {
@@ -281,6 +306,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // This builds an alert for the user to see
     private fun showAlertDialog(){
         val builder = AlertDialog.Builder(this)
         builder

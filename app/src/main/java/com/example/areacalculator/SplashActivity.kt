@@ -30,11 +30,13 @@ class SplashActivity : AppCompatActivity() {
         }
 
         appName = findViewById(R.id.appName)
+        // Sets the variable 'animation' to load in the fade_out animation.
         val animation : Animation = AnimationUtils.loadAnimation(applicationContext, R.anim.fade_out)
 
         lifecycleScope.launch {
-            // Delay for 2 seconds
+            // Delay for 1 seconds
             delay(1000)
+            // Plays fade out animation
             appName.setAnimation(animation)
 
             // Navigate to main activity
