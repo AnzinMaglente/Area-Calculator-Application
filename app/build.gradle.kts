@@ -50,8 +50,4 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
-    implementation(libs.androidx.graphics.core)
-    implementation(libs.androidx.graphics.path)
-    implementation(libs.androidx.graphics.shapes)
 }
