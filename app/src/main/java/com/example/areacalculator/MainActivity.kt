@@ -283,7 +283,7 @@ class MainActivity : AppCompatActivity() {
 
                 shapeArea.text = (buildString {
                     append(getString(R.string.triangle_result))
-                    append(resultDoubles)
+                    append(resultDouble)
                 })
             }, 2000)
         }
