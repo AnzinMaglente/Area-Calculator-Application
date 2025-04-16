@@ -225,6 +225,7 @@ class MainActivity : AppCompatActivity() {
 
             // pow is used as the mathematical equivalent of power by.
             val result = squareLength.toDouble().pow(2.00)
+            val resultDouble = String.format(getString(R.string.Double), result ?: 0.0)
 
             // This handlers delays the action for 2 seconds before allowing it to happen
             Handler(Looper.getMainLooper()).postDelayed({
@@ -232,7 +233,7 @@ class MainActivity : AppCompatActivity() {
 
                 shapeArea.text = (buildString {
                     append(getString(R.string.square_result))
-                    append(result.toString())
+                    append(resultDouble)
                 })
             }, 2000)
         }
@@ -242,13 +243,14 @@ class MainActivity : AppCompatActivity() {
             val rectangleLength = String.format(getString((R.string.Double)), (rectangleLengthString.toDoubleOrNull()) ?: 0.0)
 
             val result = rectangleWidth.toDouble() * rectangleLength.toDouble()
+            val resultDouble = String.format(getString(R.string.Double), result ?: 0.0)
 
             Handler(Looper.getMainLooper()).postDelayed({
                 Toast.makeText(this, "Calculation Successful!", Toast.LENGTH_SHORT).show()
 
                 shapeArea.text = (buildString {
                     append(getString(R.string.rectangle_result))
-                    append(result.toString())
+                    append(resultDouble)
                 })
             }, 2000)
         }
@@ -257,13 +259,14 @@ class MainActivity : AppCompatActivity() {
             val circleRadius = String.format(getString((R.string.Double)), (circleRadiusString.toDoubleOrNull()) ?: 0.0)
 
             val result = circleRadius.toDouble().pow(2.00) * 3.14
+            val resultDouble = String.format(getString(R.string.Double), result ?: 0.0)
 
             Handler(Looper.getMainLooper()).postDelayed({
                 Toast.makeText(this, "Calculation Successful!", Toast.LENGTH_SHORT).show()
 
                 shapeArea.text = (buildString {
                     append(getString(R.string.circle_result))
-                    append(result.toString())
+                    append(resultDouble)
                 })
             }, 2000)
         }
@@ -273,13 +276,14 @@ class MainActivity : AppCompatActivity() {
             val triangleHeight = String.format(getString((R.string.Double)), (triangleHeightString.toDoubleOrNull()) ?: 0.0)
 
             val result = triangleBase.toDouble() * triangleHeight.toDouble() * 0.50
+            val resultDouble = String.format(getString(R.string.Double), result ?: 0.0)
 
             Handler(Looper.getMainLooper()).postDelayed({
                 Toast.makeText(this, "Calculation Successful!", Toast.LENGTH_SHORT).show()
 
                 shapeArea.text = (buildString {
                     append(getString(R.string.triangle_result))
-                    append(result.toString())
+                    append(resultDoubles)
                 })
             }, 2000)
         }
