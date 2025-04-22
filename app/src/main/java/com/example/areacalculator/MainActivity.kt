@@ -235,7 +235,7 @@ class MainActivity : AppCompatActivity() {
                     append(getString(R.string.square_result))
                     append(resultDouble)
                 })
-            }, 2000)
+            }, 500)
         }
 
         fun rectangleCalculation(rectangleWidthString: String, rectangleLengthString: String) {
@@ -252,7 +252,7 @@ class MainActivity : AppCompatActivity() {
                     append(getString(R.string.rectangle_result))
                     append(resultDouble)
                 })
-            }, 2000)
+            }, 500)
         }
 
         fun circleCalculation(circleRadiusString: String) {
@@ -268,7 +268,7 @@ class MainActivity : AppCompatActivity() {
                     append(getString(R.string.circle_result))
                     append(resultDouble)
                 })
-            }, 2000)
+            }, 500)
         }
 
         fun triangleCalculation(triangleBaseString: String, triangleHeightString: String) {
@@ -285,7 +285,7 @@ class MainActivity : AppCompatActivity() {
                     append(getString(R.string.triangle_result))
                     append(resultDouble)
                 })
-            }, 2000)
+            }, 500)
         }
 
         submitButton.setOnClickListener {
